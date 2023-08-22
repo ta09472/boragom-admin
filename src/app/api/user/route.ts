@@ -2,7 +2,7 @@ import prisma from "@/app/libs/prisma";
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
-export async function POST(req, res) {
+export async function POST() {
   const user = await prisma.user.create({
     data: {
       name: "33333",
@@ -10,11 +10,10 @@ export async function POST(req, res) {
     },
   });
 
-  revalidatePath("http://localhost:3000/api/user");
   return NextResponse.json(user);
 }
 
-export async function GET(req, res) {
+export async function GET() {
   const users = await prisma.user.findMany();
   return NextResponse.json(users);
 }

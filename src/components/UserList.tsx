@@ -11,7 +11,7 @@ export default function UserList() {
 
   return (
     <>
-      {data?.map((v) => (
+      {data?.map((v: any) => (
         <div key={v.email}>{v.name}</div>
       ))}
     </>
