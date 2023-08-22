@@ -3,7 +3,7 @@
 import instance from "@/app/libs/axios";
 import { useQuery } from "@tanstack/react-query";
 
-const getData = async () => (await instance.get("/user")).data;
+const getData = async () => (await instance.get("/api/user")).data;
 
 export default function UserList() {
   const { data } = useQuery([], getData);
