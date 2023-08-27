@@ -14,7 +14,7 @@ import {
   OrderStatus,
   TOrderStatus,
   TReservation,
-} from "@/_types/model/order/type";
+} from "@/types/model/order/type";
 
 interface Props {
   reservationInfo: TReservation;

@@ -15,3 +15,25 @@ model User {
   email String  @unique
   name  String?
 }
+
+model Order {
+  id              Int      @id @default(autoincrement())
+  name            String
+  phoneNumber     String
+  pickupDate      DateTime
+  size            String
+  flavor          String
+  backgroundColor String
+  content         String
+  option          String
+  detailRequest   String
+  status          OrderStatus
+}
+
+enum OrderStatus {
+  PAYMENT_COMPLETED
+  PRODUCTION_COMPLETED
+  PICKUP_COMPLETED
+  REFUND_COMPLETED
+}
+

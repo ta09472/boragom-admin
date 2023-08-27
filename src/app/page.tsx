@@ -14,8 +14,8 @@ import {
   isWithinInterval,
   startOfWeek,
 } from "date-fns";
-import { TReservation } from "../_types/model/order/type";
-import getReservation from "../_types/model/order/mock";
+import { TReservation } from "../types/model/order/type";
+import getReservation from "../types/model/order/mock";
 import Reservation from "@/components/Reservation/Reservation";
 import AddReservation from "@/components/Reservation/AddReservation";
 import ReservationList from "@/components/Reservation/ReservationList";
@@ -79,8 +79,15 @@ export default function Home() {
     setSegment(value);
   };
 
-  const addReservation = (v: TReservation) => {
-    setMock((prev) => [...(prev ?? []), v]);
+  const addReservation = async (v: TReservation) => {
+    try {
+      const response = await fetch("/api/order", {
+        method: "POST",
+        body: JSON.stringify(v),
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const isEmpty = filteredData?.length === 0 ? true : false;

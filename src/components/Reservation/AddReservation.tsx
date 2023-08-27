@@ -1,8 +1,8 @@
 import { PlusOutlined } from "@ant-design/icons";
 import { Button, Input, Modal } from "antd";
 import { useState } from "react";
-import { parseReservationInfo } from "../../util/index";
-import { TReservation } from "@/_types/model/order/type";
+import { parseTextToJSON } from "../../util/index";
+import { TReservation } from "@/types/model/order/type";
 
 const placeholder = `
 1.예약자성함: 홍길동
@@ -35,25 +35,24 @@ export default function AddReservation({ onClick }: Props) {
   };
 
   const onSubmit = () => {
-    const result = parseReservationInfo(input);
+    const result = parseTextToJSON(input);
     if (result) {
       onClick(result);
       setInput(() => "");
 
       handleClose();
     }
-    console.log(result);
   };
 
   const handleOk = () => {
-    const result = parseReservationInfo(input);
+    const result = parseTextToJSON(input);
     if (result) {
       onClick(result);
       setInput(() => "");
 
       handleClose();
     }
-    console.log(result);
+
     setIsModalOpen(false);
   };
 

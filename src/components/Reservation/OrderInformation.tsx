@@ -1,6 +1,6 @@
 "use client";
 
-import { TReservation } from "@/_types/model/order/type";
+import { TReservation } from "@/types/model/order/type";
 import { Collapse, Descriptions, DescriptionsProps } from "antd";
 
 import { format } from "date-fns";
@@ -53,7 +53,7 @@ export default function OrderInformation({ reservationInfo }: Props) {
     {
       key: "6",
       label: "옵션",
-      children: <>{option?.join(", ")}</>,
+      children: <>{option}</>,
     },
     {
       key: "7",

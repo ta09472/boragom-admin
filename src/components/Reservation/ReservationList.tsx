@@ -1,4 +1,4 @@
-import { TOrderStatus, TReservation } from "@/_types/model/order/type";
+import { TOrderStatus, TReservation } from "@/types/model/order/type";
 import { addTextRestedTime, calculateTimeRemaining } from "@/util/time";
 import { Avatar, List } from "antd";
 import { format } from "date-fns";
