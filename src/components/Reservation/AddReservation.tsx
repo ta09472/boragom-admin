@@ -68,14 +68,15 @@ export default function AddReservation({ onClick }: Props) {
   return (
     <>
       <Button
-        className=" flex flex-row bg-white align-middle justify-center items-center h-10"
-        block
+        className=" bg-white flex align-middle items-center content-center"
+        shape="circle"
         onClick={handleClick}
         type="text"
         icon={
           <PlusOutlined
             style={{
-              color: "gray",
+              color: "#07020d",
+              fontSize: "2rem",
             }}
           />
         }

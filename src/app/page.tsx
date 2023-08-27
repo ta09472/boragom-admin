@@ -19,6 +19,7 @@ import getReservation from "../types/model/order/mock";
 import Reservation from "@/components/Reservation/Reservation";
 import AddReservation from "@/components/Reservation/AddReservation";
 import ReservationList from "@/components/Reservation/ReservationList";
+import NoReservation from "@/components/NoReservation";
 
 type Segment = "DAY" | "WEEK" | "NEXT_WEEK" | "TOMORROW";
 type Option = { label: string; value: Segment };
@@ -120,7 +121,7 @@ export default function Home() {
           value={segment.value}
           onChange={handleClick}
         />
-        <Segmented
+        {/* <Segmented
           className=" place-self-end"
           defaultValue={"List"}
           onChange={(v) => setViewType(() => v as "List" | "Kanban")}
@@ -134,15 +135,12 @@ export default function Home() {
               icon: <AppstoreOutlined />,
             },
           ]}
-        />
+        /> */}
       </div>
-      <AddReservation onClick={addReservation} />
-
-      {isEmpty ? (
-        <Empty description={false} />
-      ) : (
-        renderView(viewType, filteredData)
-      )}
+      <div className="overflow-auto h-full">
+        {isEmpty ? <NoReservation /> : renderView(viewType, filteredData)}
+      </div>
+      {/* <AddReservation onClick={addReservation} /> */}
     </div>
   );
 }

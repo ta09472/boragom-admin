@@ -32,7 +32,7 @@ export default function ReservationList({ reservationInfo }: Props) {
       renderItem={(item, index) => (
         <List.Item
           className={twMerge(
-            "p-2 bg-white border-l-8  rounded-md",
+            "p-2 bg-white border-l-8  rounded-md my-3",
             getColor(item.status)
           )}
         >

@@ -3,7 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 import { Layout } from "antd";
-import { Sider, Header } from "@/components/Layout";
+import { Header, Footer } from "@/components/Layout";
 
 export const metadata: Metadata = {
   title: "Boragom",
@@ -24,10 +24,10 @@ export default function RootLayout({
       <body className="min-h-screen antialiased">
         <Providers>
           <Layout className="h-screen overflow-hidden" hasSider>
-            <Sider />
             <Layout className=" overflow-auto">
               <Header />
-              {children}
+              <div className="mb-[4rem]">{children}</div>
+              <Footer />
             </Layout>
           </Layout>
         </Providers>
