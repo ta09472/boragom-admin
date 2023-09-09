@@ -5,7 +5,7 @@ const data: TReservation[] = [
     id: 1,
     name: "김범수",
     phoneNumber: "010-222-0222",
-    pickupDate: "2023-08-27 15:00",
+    pickupDate: "2023-09-07 15:00",
     size: "2",
     flavor: "white",
     backgroundColor:
@@ -25,7 +25,7 @@ const data: TReservation[] = [
     id: 2,
     name: "박범수",
     phoneNumber: "010-222-0232",
-    pickupDate: "2023-08-27 19:00",
+    pickupDate: "2023-09-02 19:00",
     size: "1",
     flavor: "chocolate",
     backgroundColor:
@@ -44,7 +44,7 @@ const data: TReservation[] = [
     id: 3,
     name: "최범수",
     phoneNumber: "010-222-0232",
-    pickupDate: "2023-08-28 12:30",
+    pickupDate: "2023-09-14 12:30",
     size: "mini",
     flavor: "화이트",
     backgroundColor:
@@ -61,7 +61,7 @@ const data: TReservation[] = [
     id: 4,
     name: "최범수",
     phoneNumber: "010-222-0232",
-    pickupDate: "2023-08-31 12:30",
+    pickupDate: "2023-09-09 12:30",
     size: "mini",
     flavor: "chocolate",
     backgroundColor:
@@ -78,7 +78,7 @@ const data: TReservation[] = [
     id: 5,
     name: "김슈수",
     phoneNumber: "010-222-0232",
-    pickupDate: "2023-08-31 11:30",
+    pickupDate: "2023-09-09 11:30",
     size: "mini",
     flavor: "chocolate",
     backgroundColor:
@@ -95,7 +95,7 @@ const data: TReservation[] = [
     id: 4,
     name: "박보경",
     phoneNumber: "010-222-0232",
-    pickupDate: "2023-08-30 12:30",
+    pickupDate: "2023-09-10 12:30",
     size: "mini",
     flavor: "chocolate",
     backgroundColor:

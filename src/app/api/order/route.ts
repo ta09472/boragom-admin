@@ -1,4 +1,5 @@
 import prisma from "@/app/libs/prisma";
+import { revalidatePath } from "next/cache";
 
 import { NextResponse } from "next/server";
 
@@ -12,6 +13,8 @@ export async function POST(req: Request, res: Response) {
         status: "PAYMENT_COMPLETED",
       },
     });
+    revalidatePath("http://localhost:3000/api/order");
+
     return NextResponse.json(post);
   } catch (err) {
     return NextResponse.json({ message: err, success: false });

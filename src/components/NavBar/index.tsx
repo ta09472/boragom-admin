@@ -1,12 +1,16 @@
+"use client";
+
 import { HddFilled, HomeOutlined } from "@ant-design/icons";
 import { usePathname } from "next/navigation";
 import "./style.css";
 import Link from "next/link";
 import AddReservation from "../Reservation/AddReservation";
 import { TReservation } from "@/types/model/order/type";
+import { useRouter } from "next/navigation";
 
 export default function NavBar() {
   const pathname = usePathname();
+  const router = useRouter();
 
   const getSelectedKeys = (pathname: string) => {
     switch (pathname) {
@@ -24,13 +28,15 @@ export default function NavBar() {
 
   const addReservation = async (v: TReservation) => {
     try {
-      const response = await fetch("/api/order", {
+      await fetch("/api/order", {
         method: "POST",
         body: JSON.stringify(v),
+        cache: "no-cache",
       });
     } catch (error) {
       console.log(error);
     }
+    router.refresh();
   };
 
   return (
