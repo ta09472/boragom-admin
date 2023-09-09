@@ -17,6 +17,7 @@ import NoReservation from "../NoReservation";
 
 import { Segment, Option } from "@/app/page";
 import Link from "next/link";
+import { baseURL } from "@/app/api/order/route";
 
 const getFilteredData = (data: TReservation[] | undefined, seg: Segment) => {
   switch (seg) {
@@ -63,8 +64,7 @@ interface Props {
 }
 
 export default async function ReservationList({ segment }: Props) {
-  const data: TReservation[] = await fetch("http://localhost:3000/api/order", {
-    cache: "no-cache",
+  const data: TReservation[] = await fetch(`${baseURL}/api/order`, {
     next: {
       revalidate: 10,
     },
@@ -80,7 +80,7 @@ export default async function ReservationList({ segment }: Props) {
       itemLayout="horizontal"
       dataSource={filteredData}
       renderItem={(item, index) => (
-        <Link href={`http://localhost:3000/detail/${item.id}`}>
+        <Link href={`${baseURL}/detail/${item.id}`}>
           <List.Item
             className={twMerge(
               "p-2 bg-white border-l-8  rounded-md my-3",
