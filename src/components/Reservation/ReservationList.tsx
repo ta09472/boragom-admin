@@ -82,7 +82,7 @@ export default async function ReservationList({ segment }: Props) {
       itemLayout="horizontal"
       dataSource={filteredData}
       renderItem={(item, index) => (
-        <Link href={`${process.env.BASE_URL}/detail/${item.id}`}>
+        <Link href={`${process.env.BASE_URL}/order/${item.id}`}>
           <List.Item
             className={twMerge(
               "p-2 bg-white border-l-8  rounded-md my-3",
