@@ -9,7 +9,7 @@ interface Props {
 
 export default async function OrderDetail({ params }: Props) {
   const orderDetail: TReservation = await fetch(
-    `http://localhost:3000/api/order/${params.id}`,
+    `${process.env.BASE_URL}/api/order/${params.id}`,
     {
       cache: "no-cache",
       next: {
