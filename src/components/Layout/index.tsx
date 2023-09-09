@@ -83,7 +83,7 @@ export function Header() {
   const handleClick = ({ key }: MenuInfo) => {};
 
   return (
-    <Layout.Header className="bg-white border-b-2 border-violet-200 h-[3.5rem] flex  items-center content-center sticky top-0 z-50">
+    <Layout.Header className=" bg-white border-b-2 border-violet-200 h-[3.5rem] flex  items-center content-center sticky top-0 z-50">
       Boragom
     </Layout.Header>
   );
@@ -101,12 +101,8 @@ export function Footer() {
     }
   };
 
-  const handleClick = ({ key }: MenuInfo) => {
-    router.push(key);
-  };
-
   return (
-    <Layout.Footer className="p-0 fixed bottom-0 bg-white w-screen h-[4rem]">
+    <Layout.Footer className="p-0 fixed bottom-0 w-screen h-[4rem]">
       <NavBar />
     </Layout.Footer>
   );

@@ -1,18 +1,20 @@
-.ant-radio-button-wrapper {
-  border: none !important;
-  border: none;
-  transition: none !important; /* Removes the border transition for a smoother feel */
-}
-
+/* .ant-radio-button-wrapper {
+    border: none !important;
+    border: none;
+    transition: none !important;
+   
+  } */
+/* Removes the border transition for a smoother feel */
 /* To remove the focus outline when radio button is focused */
-.ant-radio-button-wrapper:focus-within {
-  box-shadow: none;
-  border: none;
-}
+/* .ant-radio-button-wrapper:focus-within {
+    box-shadow: none;
+    border: none;
+  } */
 
 /* Removes the click animation */
-.ant-radio-button-wrapper:active,
-.ant-radio-button-wrapper-checked:active {
-  box-shadow: none !important;
-  border: none;
-}
+/* .ant-radio-button-wrapper:active,
+  .ant-radio-button-wrapper-checked:active {
+    box-shadow: none !important;
+    border: none;
+  }
+   */

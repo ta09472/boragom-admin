@@ -76,7 +76,7 @@ export default function AddReservation({ onClick }: Props) {
           <PlusOutlined
             style={{
               color: "#07020d",
-              fontSize: "2rem",
+              fontSize: "1.6rem",
             }}
           />
         }

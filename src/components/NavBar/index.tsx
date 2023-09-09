@@ -40,11 +40,11 @@ export default function NavBar() {
   };
 
   return (
-    <div className="w-screen px-2 flex justify-between align-middle items-center h-full">
+    <div className="w-screen px-5 flex justify-between align-middle items-center h-full rounded-t-xl bg-white">
       <Link href={"/"}>
         <HomeOutlined
           style={{
-            fontSize: "2rem",
+            fontSize: "1.6rem",
             color: getSelectedKeys(pathname) === "/" ? "#d9c7f5" : "#07020d",
           }}
         />
@@ -53,7 +53,7 @@ export default function NavBar() {
       <Link href={"/management"}>
         <HddFilled
           style={{
-            fontSize: "2rem",
+            fontSize: "1.4rem",
             color:
               getSelectedKeys(pathname) === "management"
                 ? "#d9c7f5"

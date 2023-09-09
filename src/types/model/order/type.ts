@@ -69,7 +69,16 @@ export const OrderStatus: TOrderStatusMap = {
 
 // type TSize = '1' | '2' | '3' | 'mini'
 
-type TFlavor = "white" | "chocolate";
+type TFlavor = "strawberry" | "strawberry_chocolate" | "pig" | "oreo";
+
+export const FlavorMap: {
+  [key in TFlavor]: string;
+} = {
+  strawberry: "기본 딸기잼",
+  strawberry_chocolate: "초코 딸기",
+  pig: "꿀꿀바",
+  oreo: "오레오",
+};
 
 // type TOption = 'iceBag' | 'icePack'
 
