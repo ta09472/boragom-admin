@@ -1,6 +1,6 @@
 "use client";
 
-import { HddFilled, HomeOutlined } from "@ant-design/icons";
+import { HomeOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import { usePathname } from "next/navigation";
 import "./style.css";
 import Link from "next/link";
@@ -45,18 +45,18 @@ export default function NavBar() {
         <HomeOutlined
           style={{
             fontSize: "1.6rem",
-            color: getSelectedKeys(pathname) === "/" ? "#d9c7f5" : "#b8b8b8",
+            color: getSelectedKeys(pathname) === "/" ? "#c3a7f0" : "#b8b8b8",
           }}
         />
       </Link>
       <AddReservation onClick={addReservation} />
       <Link href={"/management"}>
-        <HddFilled
+        <UnorderedListOutlined
           style={{
             fontSize: "1.4rem",
             color:
               getSelectedKeys(pathname) === "management"
-                ? "#d9c7f5"
+                ? "#c3a7f0"
                 : "#b8b8b8",
           }}
         />

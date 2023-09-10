@@ -68,19 +68,21 @@ export default function AddReservation({ onClick }: Props) {
   return (
     <>
       <Button
-        className=" bg-white flex align-middle items-center content-center"
+        className=" bg-white flex flex-row align-middle justify-center items-center"
         shape="circle"
         onClick={handleClick}
         type="text"
-        icon={
-          <PlusOutlined
-            style={{
-              color: "#b8b8b8",
-              fontSize: "1.6rem",
-            }}
-          />
-        }
-      />
+        // icon={
+        //   <PlusOutlined
+        //     style={{
+        //       color: "#b8b8b8",
+        //       fontSize: "1.6rem",
+        //     }}
+        //   />
+        // }
+      >
+        <PlusOutlined style={{ color: "#989696", fontSize: "1.4rem" }} />
+      </Button>
       <Modal
         okType="default"
         title="예약 정보 입력"

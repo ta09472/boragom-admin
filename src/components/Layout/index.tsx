@@ -71,20 +71,9 @@ export function Sider() {
 }
 
 export function Header() {
-  const getSelectedKeys = (pathname: string) => {
-    switch (pathname) {
-      case "/management":
-        return ["management"];
-      default:
-        return ["/"];
-    }
-  };
-
-  const handleClick = ({ key }: MenuInfo) => {};
-
   return (
-    <Layout.Header className=" bg-white border-b-2 border-violet-200 h-[3.5rem] flex  items-center content-center sticky top-0 z-50">
-      Boragom
+    <Layout.Header className=" bg-white border-b-2 border-violet-100 h-[3.5rem] flex flex-row p-2  items-center sticky top-0 z-50">
+      <Image src="/boragom.png" alt="logo" width="50" height="50" />
     </Layout.Header>
   );
 }
