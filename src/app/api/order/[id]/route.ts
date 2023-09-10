@@ -1,4 +1,5 @@
 import prisma from "@/app/libs/prisma";
+import { TReservation } from "@/types/model/order/type";
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -37,15 +38,23 @@ export async function PUT(
 ) {
   const id = Number(params.id);
 
-  const { status } = await request.json();
+  const body = await request.json();
+  const prev = await prisma.order.findUnique({
+    where: {
+      id,
+    },
+  });
+
+  const newVal: TReservation = {
+    ...prev,
+    ...body,
+  };
 
   const order = await prisma.order.update({
     where: {
       id,
     },
-    data: {
-      status,
-    },
+    data: newVal,
   });
 
   return NextResponse.json({ response: order });

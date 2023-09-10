@@ -1,39 +1,8 @@
 import ReservationForm from "@/components/Reservation/ReservationForm";
-import {
-  OrderStatus,
-  TOrderStatus,
-  TReservation,
-} from "@/types/model/order/type";
-import { EditOutlined, LeftOutlined, PlusOutlined } from "@ant-design/icons";
-import {
-  Button,
-  DatePicker,
-  Form,
-  Input,
-  InputNumber,
-  Radio,
-  Select,
-  TreeSelect,
-  Upload,
-} from "antd";
-import TextArea from "antd/es/input/TextArea";
-import { format } from "date-fns";
+import { TReservation } from "@/types/model/order/type";
+import { LeftOutlined } from "@ant-design/icons";
+import { Button } from "antd";
 import { twMerge } from "tailwind-merge";
-
-const getColor = (v: TOrderStatus) => {
-  switch (v) {
-    case "PAYMENT_COMPLETED":
-      return "border-blue-500";
-    case "PICKUP_COMPLETED":
-      return "border-green-500";
-    case "PRODUCTION_COMPLETED":
-      return "border-violet-500";
-    case "REFUND_COMPLETED":
-      return "border-gray-500";
-    default:
-      return "border-gray-50";
-  }
-};
 
 interface Props {
   params: { id: string };
@@ -46,26 +15,6 @@ export default async function OrderEdit({ params }: Props) {
       cache: "no-cache",
     }
   ).then((v) => v.json());
-
-  const {
-    name,
-    detailRequest,
-    phoneNumber,
-    option,
-    pickupDate,
-    size,
-    status,
-    flavor,
-    backgroundColor,
-    content,
-    image,
-  } = orderDetail;
-  const normFile = (e: any) => {
-    if (Array.isArray(e)) {
-      return e;
-    }
-    return e?.fileList;
-  };
 
   return (
     <div className="flex flex-col py-4 px-4 md:px-24 lg:px-48 xl:px-96 gap-4">
@@ -82,7 +31,6 @@ export default async function OrderEdit({ params }: Props) {
       <div
         className={twMerge(
           "overflow-auto h-[37rem] bg-white rounded-md p-4 flex flex-col gap-4"
-          // getColor(status)
         )}
       >
         <ReservationForm order={orderDetail} />
@@ -120,9 +68,9 @@ export default async function OrderEdit({ params }: Props) {
           연락처:<p>{phoneNumber}</p>
         </div> */}
       </div>
-      <Button type="primary" style={{ backgroundColor: "#7f40dd" }}>
+      {/* <Button type="primary" style={{ backgroundColor: "#7f40dd" }}>
         변경 사항 저장
-      </Button>
+      </Button> */}
     </div>
   );
 }

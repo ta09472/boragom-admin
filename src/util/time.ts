@@ -1,4 +1,5 @@
 import { differenceInDays, differenceInSeconds, format } from "date-fns";
+import dayjs from "dayjs";
 
 export function calculateTimeRemaining(targetDateISO: string) {
   const targetDate = new Date(targetDateISO);
@@ -32,4 +33,12 @@ export function addTextRestedTime(date: string) {
   return `${calculatedTime
     .replace(" ", "일 ")
     .replace(":", "시간 ")}분 남았어요!`;
+}
+
+export function getDateByyyyyMMdd(date: Date | string) {
+  return format(new Date(date), "yyyy-MM-dd");
+}
+
+export function getTimeByhhmm(date: Date | string) {
+  return dayjs(new Date(date)).format("HH:mm");
 }

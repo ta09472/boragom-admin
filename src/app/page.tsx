@@ -3,8 +3,9 @@
 import { Segmented } from "antd";
 import { Option } from "antd/es/mentions";
 import { SegmentedValue } from "antd/es/segmented";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import ReservationList from "@/components/Reservation/ReservationList";
+import Loading from "./loading";
 
 export type Segment = "DAY" | "WEEK" | "NEXT_WEEK" | "TOMORROW";
 export type Option = { label: string; value: Segment };
@@ -44,7 +45,9 @@ export default function Home() {
         />
       </div>
       <div className="overflow-auto h-[40rem]">
-        <ReservationList segment={segment} />
+        <Suspense fallback={<Loading />}>
+          <ReservationList segment={segment} />
+        </Suspense>
       </div>
     </div>
   );
