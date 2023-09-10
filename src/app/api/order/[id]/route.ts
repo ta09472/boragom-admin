@@ -1,5 +1,6 @@
 import prisma from "@/app/libs/prisma";
-import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
   request: Request,
@@ -28,4 +29,24 @@ export async function DELETE(
   });
 
   return NextResponse.json(order);
+}
+
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const id = Number(params.id);
+
+  const { status } = await request.json();
+
+  const order = await prisma.order.update({
+    where: {
+      id,
+    },
+    data: {
+      status,
+    },
+  });
+
+  return NextResponse.json({ response: order });
 }

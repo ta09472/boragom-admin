@@ -1,3 +1,4 @@
+import OrderStatusSelect from "@/components/OrderStatusSelect";
 import {
   OrderStatus,
   TOrderStatus,
@@ -28,13 +29,11 @@ interface Props {
 }
 
 export default async function OrderDetail({ params }: Props) {
+  console.log(params.id);
   const orderDetail: TReservation = await fetch(
     `${process.env.BASE_URL}/api/order/${params.id}`,
     {
       cache: "no-cache",
-      next: {
-        revalidate: 10,
-      },
     }
   ).then((v) => v.json());
 
@@ -80,19 +79,22 @@ export default async function OrderDetail({ params }: Props) {
         </div>
         <div className="flex justify-between  text-gray-800 font-semibold">
           픽업 날짜 및 시간:
-          <p>{format(new Date(pickupDate), "yyyy-MM-dd hh-mm")}</p>
+          <p>{format(new Date(pickupDate), "yyyy-MM-dd hh:mm")}</p>
         </div>
         <div className="flex justify-between  text-gray-800">
-          주문 상태 :<p>{OrderStatus[status].label}</p>
+          주문 상태 : <OrderStatusSelect status={OrderStatus[status].value} />
         </div>
         <div className="flex justify-between  text-gray-800">
           사이즈:<p>{size}</p>
         </div>
         <div className="flex justify-between  text-gray-800">
-          시트:<p>{flavor}</p>
+          맛:<p>{flavor}</p>
         </div>
         <div className="flex justify-between  text-gray-800">
           옵션:<p>{option}</p>
+        </div>
+        <div className="flex justify-between  text-gray-800">
+          바탕색:<p>{backgroundColor}</p>
         </div>
         <div className="flex justify-between  text-gray-800">
           내용:

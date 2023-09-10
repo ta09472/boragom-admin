@@ -45,7 +45,7 @@ export default function NavBar() {
         <HomeOutlined
           style={{
             fontSize: "1.6rem",
-            color: getSelectedKeys(pathname) === "/" ? "#d9c7f5" : "#07020d",
+            color: getSelectedKeys(pathname) === "/" ? "#d9c7f5" : "#b8b8b8",
           }}
         />
       </Link>
@@ -57,7 +57,7 @@ export default function NavBar() {
             color:
               getSelectedKeys(pathname) === "management"
                 ? "#d9c7f5"
-                : "#07020d",
+                : "#b8b8b8",
           }}
         />
       </Link>

@@ -41,6 +41,7 @@ const statusOption = Object.entries(OrderStatus).map((v) => ({
 export default function ReservationForm({ order }: Props) {
   const { id } = useParams();
   const router = useRouter();
+
   const [form, setForm] = useState({});
   const normFile = (e: any) => {
     if (Array.isArray(e)) {
@@ -65,13 +66,6 @@ export default function ReservationForm({ order }: Props) {
         layout="horizontal"
         style={{ maxWidth: 800 }}
       >
-        <Form.Item label="주문 상태">
-          <Radio.Group
-            optionType="button"
-            options={statusOption}
-            value={order.status}
-          />
-        </Form.Item>
         <Form.Item label="이름">
           <Input value={order.name} />
         </Form.Item>
@@ -94,10 +88,14 @@ export default function ReservationForm({ order }: Props) {
         </div>
 
         <Form.Item label="내용">
-          <TextArea rows={4} value={order.content} />
+          <TextArea rows={5} value={order.content} style={{ resize: "none" }} />
         </Form.Item>
         <Form.Item label="요청사항">
-          <TextArea rows={4} value={order.detailRequest} />
+          <TextArea
+            rows={5}
+            value={order.detailRequest}
+            style={{ resize: "none" }}
+          />
         </Form.Item>
 
         <Form.Item valuePropName="fileList" getValueFromEvent={normFile}>

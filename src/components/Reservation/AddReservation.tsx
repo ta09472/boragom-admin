@@ -75,7 +75,7 @@ export default function AddReservation({ onClick }: Props) {
         icon={
           <PlusOutlined
             style={{
-              color: "#07020d",
+              color: "#b8b8b8",
               fontSize: "1.6rem",
             }}
           />

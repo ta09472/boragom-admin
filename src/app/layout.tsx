@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 
 import { Layout } from "antd";
 import { Header, Footer } from "@/components/Layout";
+import StyledComponentsRegistry from "@/app/libs/AntdRegistry";
 
 export const metadata: Metadata = {
   title: "Boragom",
@@ -26,7 +27,9 @@ export default function RootLayout({
           <Layout className="h-screen overflow-hidden" hasSider>
             <Layout className=" overflow-auto">
               <Header />
-              <div className="mb-[4rem]">{children}</div>
+              <StyledComponentsRegistry>
+                <div className="mb-[4rem]">{children}</div>
+              </StyledComponentsRegistry>
               <Footer />
             </Layout>
           </Layout>

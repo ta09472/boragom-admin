@@ -1,15 +1,9 @@
-"use client";
-
-import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ConfigProvider } from "antd";
-
 import { FC, ReactNode } from "react";
 
 interface LayoutProps {
   children: ReactNode;
 }
-
-const queryClient = new QueryClient();
 
 // 'text': '#07020d',
 // 'background': '#eee5fa',
@@ -31,7 +25,7 @@ const Providers: FC<LayoutProps> = ({ children }) => {
         },
       }}
     >
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      {children}
     </ConfigProvider>
   );
 };

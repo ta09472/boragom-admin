@@ -63,12 +63,11 @@ interface Props {
 }
 
 export default async function ReservationList({ segment }: Props) {
+  // 쿼리로 변경해야함 필터가 아니라
   const data: TReservation[] = await fetch(
     `${process.env.BASE_URL}/api/order`,
     {
-      next: {
-        revalidate: 10,
-      },
+      next: { revalidate: 10 },
     }
   ).then((v) => v.json());
 
@@ -105,7 +104,7 @@ export default async function ReservationList({ segment }: Props) {
                   <div>사이즈: {item.size}호</div>
                   <div>
                     픽업 날짜:
-                    {format(new Date(item.pickupDate), "yyyy-MM-dd hh-mm")}
+                    {format(new Date(item.pickupDate), "yyyy-MM-dd hh:mm")}
                   </div>
                 </div>
               }

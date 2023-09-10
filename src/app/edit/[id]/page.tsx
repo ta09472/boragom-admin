@@ -44,9 +44,6 @@ export default async function OrderEdit({ params }: Props) {
     `${process.env.BASE_URL}/api/order/${params.id}`,
     {
       cache: "no-cache",
-      next: {
-        revalidate: 10,
-      },
     }
   ).then((v) => v.json());
 
@@ -123,7 +120,9 @@ export default async function OrderEdit({ params }: Props) {
           연락처:<p>{phoneNumber}</p>
         </div> */}
       </div>
-      <Button type="primary">변경 사항 저장</Button>
+      <Button type="primary" style={{ backgroundColor: "#7f40dd" }}>
+        변경 사항 저장
+      </Button>
     </div>
   );
 }

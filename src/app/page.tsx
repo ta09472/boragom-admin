@@ -34,7 +34,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col py-4 px-4 md:px-24 lg:px-48 xl:px-96 gap-4 bg">
+    <div className="flex flex-col py-4 px-4 md:px-24 lg:px-48 xl:px-96 gap-4">
       <div className="flex flex-col place-self-end">
         <Segmented
           options={options}
