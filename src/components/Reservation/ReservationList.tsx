@@ -96,13 +96,18 @@ export default async function ReservationList({ segment }: Props) {
                 />
               }
               key={item.id}
-              title={<div>{item.name}</div>}
-              description={
-                <div className="flex-col flex">
-                  <div className=" font-semibold text-black">
+              title={
+                <div className="flex flex-row justify-between">
+                  <div className="font-semibold">{item.name}</div>
+                  <div className=" font-semibold text-black pr-4">
                     {addTextRestedTime(new Date(item.pickupDate).toISOString())}
                   </div>
-                  <div>사이즈: {item.size}호</div>
+                </div>
+              }
+              description={
+                <div className="flex-col flex">
+                  <div>사이즈: {item.size}</div>
+                  <div>맛: {item.flavor}</div>
                   <div>
                     픽업 날짜:
                     {format(new Date(item.pickupDate), "yyyy-MM-dd hh:mm")}

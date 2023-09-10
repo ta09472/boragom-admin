@@ -1,15 +1,25 @@
 "use client";
 
 import { FlavorMap, OrderStatus, TReservation } from "@/types/model/order/type";
-import { getDateByyyyyMMdd, getTimeByhhmm } from "@/util/time";
-import { Button, DatePicker, Form, Input, Radio, Select, Upload } from "antd";
+import { getDateByyyyyMMdd } from "@/util/time";
+import { DeleteOutlined } from "@ant-design/icons";
+import {
+  Button,
+  DatePicker,
+  Form,
+  FormInstance,
+  Input,
+  Radio,
+  Select,
+  Upload,
+} from "antd";
 import TextArea from "antd/es/input/TextArea";
-import { format, parse } from "date-fns";
 import dayjs from "dayjs";
 import { useParams, useRouter } from "next/navigation";
 
 interface Props {
   order: TReservation;
+  form: FormInstance;
 }
 
 const config = {
@@ -39,10 +49,15 @@ const statusOption = Object.entries(OrderStatus).map((v) => ({
   value: v[1].value,
 }));
 
-export default function ReservationForm({ order }: Props) {
+// const editionalOption = [
+//   { label: "보냉백 + 아이스팩", value: "보냉백 + 아이스팩" },
+//   { label: "아이스팩", value: "아이스팩" },
+//   { label: "선택 안함", value: "선택 안함" },
+// ];
+
+export default function ReservationForm({ order, form }: Props) {
   const { id } = useParams();
   const router = useRouter();
-  const [form] = Form.useForm();
 
   const endPoint = `${process.env.BASE_URL}/api/order/${id}`;
 
@@ -61,63 +76,6 @@ export default function ReservationForm({ order }: Props) {
     await router.push("/");
   };
 
-  const submitForm = async () => {
-    const input = form.getFieldsValue();
-    const pickupDate = getDateByyyyyMMdd(form.getFieldValue("date")["$d"]);
-    const pickupTime = getTimeByhhmm(form.getFieldValue("time"));
-
-    const date = parse(pickupDate, "yyyy-MM-dd", new Date());
-    const time = parse(pickupTime, "HH:mm", new Date());
-
-    // Date 객체의 날짜 부분과 시간 부분을 결합
-    const combinedDate = new Date(
-      date.getFullYear(),
-      date.getMonth(),
-      date.getDate(),
-      time.getHours(),
-      time.getMinutes()
-    );
-
-    // 원하는 형식의 문자열로 변환
-    const result = new Date(
-      format(combinedDate, "yyyy-MM-dd HH:mm")
-    ).toISOString();
-
-    // id: number;
-    // name: string;
-    // phoneNumber: string;
-    // pickupDate: Date;
-    // size: string;
-    // flavor: string;
-    // backgroundColor: string;
-    // content: string;
-    // option: string;
-    // detailRequest: string;
-    // status: $Enums.OrderStatus;
-
-    const req: Omit<TReservation, "id"> = {
-      name: input.name,
-      phoneNumber: input.phoneNumber,
-      pickupDate: result,
-      size: input.size,
-      flavor: input.flavor,
-      backgroundColor: input.backgroundColor,
-      content: input.content,
-      option: input.option,
-      detailRequest: input.detailRequest,
-      status: order.status,
-    };
-
-    const res = await fetch(endPoint, {
-      method: "PUT",
-      body: JSON.stringify(req),
-    });
-    const json = await res.json();
-
-    await router.refresh();
-    await router.push(`/order/${id}`);
-  };
-
   return (
     <>
       <Form
@@ -126,12 +84,13 @@ export default function ReservationForm({ order }: Props) {
         layout="horizontal"
         style={{ maxWidth: 800 }}
         form={form}
-        onFinish={submitForm}
       >
         <Form.Item name="name" label="이름" initialValue={order.name}>
           <Input />
         </Form.Item>
-
+        <Form.Item name="status" label="주문 상태" initialValue={order.status}>
+          <Radio.Group optionType="button" options={statusOption} />
+        </Form.Item>
         <Form.Item name="flavor" label="맛" initialValue={order.flavor}>
           <Select options={flavorOptions} />
         </Form.Item>
@@ -145,17 +104,14 @@ export default function ReservationForm({ order }: Props) {
         >
           <Input />
         </Form.Item>
-        <Form.Item name="option" label="옵션" initialValue={order.option}>
-          <Input />
-        </Form.Item>
-        <div className="flex-row flex">
+        <div className="flex-row flex gap-6">
           <Form.Item
             name="date"
             label="픽업 날짜"
             {...config}
             initialValue={dayjs(getDateByyyyyMMdd(order.pickupDate))}
           >
-            <DatePicker format="YYYY-MM-DD" />
+            <DatePicker format="YYYY-MM-DD" className="w-full" />
           </Form.Item>
           <Form.Item
             name="time"
@@ -163,7 +119,7 @@ export default function ReservationForm({ order }: Props) {
             {...config}
             initialValue={dayjs(getDateByyyyyMMdd(order.pickupDate))}
           >
-            <DatePicker picker="time" format="HH:mm" />
+            <DatePicker picker="time" format="HH:mm" className="w-full" />
           </Form.Item>
         </div>
         <Form.Item name="content" label="내용" initialValue={order.content}>
@@ -184,7 +140,9 @@ export default function ReservationForm({ order }: Props) {
             </div>
           </Upload>
         </Form.Item> */}
-        {/* // 얘만 밖으로 빼고 싶은데 */}
+        <Form.Item name="option" label="옵션" initialValue={order.option}>
+          <Input />
+        </Form.Item>
         <Form.Item
           name="phoneNumber"
           label="연락처"
@@ -192,13 +150,13 @@ export default function ReservationForm({ order }: Props) {
         >
           <Input />
         </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit" block onClick={submitForm}>
-            변경 사항 저장
-          </Button>
-        </Form.Item>
       </Form>
-      <Button danger type="primary" onClick={deleteHandler}>
+      <Button
+        danger
+        type="primary"
+        onClick={deleteHandler}
+        icon={<DeleteOutlined />}
+      >
         주문 삭제
       </Button>
     </>

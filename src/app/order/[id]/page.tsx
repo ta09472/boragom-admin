@@ -79,7 +79,7 @@ export default async function OrderDetail({ params }: Props) {
         </div>
         <div className="flex justify-between  text-gray-800 font-semibold">
           픽업 날짜 및 시간:
-          <p>{format(new Date(pickupDate), "yyyy-MM-dd hh:mm")}</p>
+          <p>{format(new Date(pickupDate), "yyyy-MM-dd HH:mm")}</p>
         </div>
         <div className="flex justify-between  text-gray-800">
           주문 상태 : <OrderStatusSelect status={OrderStatus[status].value} />

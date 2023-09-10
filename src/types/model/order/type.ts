@@ -69,7 +69,7 @@ export const OrderStatus: TOrderStatusMap = {
 
 // type TSize = '1' | '2' | '3' | 'mini'
 
-type TFlavor = "strawberry" | "strawberry_chocolate" | "pig" | "oreo";
+export type TFlavor = "strawberry" | "strawberry_chocolate" | "pig" | "oreo";
 
 export const FlavorMap: {
   [key in TFlavor]: string;
@@ -80,7 +80,7 @@ export const FlavorMap: {
   oreo: "오레오",
 };
 
-// type TOption = 'iceBag' | 'icePack'
+export type TOption = "보냉백 + 아이스팩" | "아이스팩" | "선택 안함";
 
 export type TReservation = {
   name: string;
@@ -89,10 +89,8 @@ export type TReservation = {
   size: string;
   flavor: TFlavor | string;
   backgroundColor: string;
-
   content: string;
-
-  option?: string;
+  option?: TOption | string;
   detailRequest?: string;
   image?: string;
   status: TOrderStatus;
