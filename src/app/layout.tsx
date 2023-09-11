@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className="min-h-screen antialiased">
         <Providers>
           <Layout className="h-screen overflow-hidden" hasSider>
-            <Layout className=" overflow-auto">
+            <Layout className=" overflow-hidden">
               <Header />
               <StyledComponentsRegistry>
                 <div className="mb-[4rem]">{children}</div>

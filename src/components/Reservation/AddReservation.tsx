@@ -4,8 +4,7 @@ import { useState } from "react";
 import { parseTextToJSON } from "../../util/index";
 import { TReservation } from "@/types/model/order/type";
 
-const placeholder = `
-1.예약자성함: 홍길동
+const placeholder = `1.예약자성함: 홍길동
 2.연락처: 01010101010ㄴ
 3.픽업 날짜/요일/시간: 2023-08-23
 4.사이즈: 미니
