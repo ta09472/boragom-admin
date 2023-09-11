@@ -98,9 +98,5 @@ export function Footer() {
     router.refresh();
   };
 
-  return (
-    <Layout.Footer>
-      <AddReservation onClick={addReservation} />
-    </Layout.Footer>
-  );
+  return <AddReservation onClick={addReservation} />;
 }

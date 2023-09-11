@@ -6,6 +6,7 @@ import { SegmentedValue } from "antd/es/segmented";
 import { Suspense, useState } from "react";
 import ReservationList from "@/components/Reservation/ReservationList";
 import Loading from "./loading";
+import { Footer } from "@/components/Layout";
 
 export type Segment = "DAY" | "WEEK" | "NEXT_WEEK" | "TOMORROW";
 export type Option = { label: string; value: Segment };
@@ -49,6 +50,7 @@ export default function Home() {
           <ReservationList segment={segment} />
         </Suspense>
       </div>
+      <Footer />
     </div>
   );
 }
