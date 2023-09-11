@@ -22,11 +22,12 @@ export default function RootLayout({
   return (
     <html>
       <link rel="icon" href="/boragom.ico" />
-      <meta
-        name="viewport"
-        content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"
-      />
-
+      <head>
+        <meta
+          name="viewport"
+          content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"
+        />
+      </head>
       <body>
         <Providers>
           <Layout>
