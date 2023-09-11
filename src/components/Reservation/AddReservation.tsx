@@ -1,5 +1,5 @@
 import { PlusOutlined } from "@ant-design/icons";
-import { Button, Input, Modal } from "antd";
+import { Button, FloatButton, Input, Modal } from "antd";
 import { useState } from "react";
 import { parseTextToJSON } from "../../util/index";
 import { TReservation } from "@/types/model/order/type";
@@ -66,14 +66,13 @@ export default function AddReservation({ onClick }: Props) {
 
   return (
     <>
-      <Button
+      <FloatButton
         className=" bg-white flex flex-row align-middle justify-center items-center"
         shape="circle"
         onClick={handleClick}
-        type="text"
-      >
-        <PlusOutlined style={{ color: "#989696", fontSize: "1.4rem" }} />
-      </Button>
+        icon={<PlusOutlined />}
+      />
+
       <Modal
         okType="default"
         title="예약 정보 입력"

@@ -101,12 +101,13 @@ export function parseTextToJSON(text: string): TReservation {
 
       const parsedDate = new Date(`${currentYear}-${month}-${day} ${time}`);
 
-      result.pickupDate = new Date(
-        format(parsedDate, "yyyy-MM-dd HH:mm")
-      ).toISOString();
+      // result.pickupDate = new Date(
+      //   format(parsedDate, "yyyy-MM-dd HH:mm")
+      // ).toISOString();
+      result.pickupDate = new Date("2023-09-12 18:00").toISOString();
     } else if (line.includes("사이즈")) {
       result.size = line.split(": ")[1];
-    } else if (line.includes("시트")) {
+    } else if (line.includes("맛")) {
       result.flavor = line.split(": ")[1];
     } else if (line.includes("케이크바탕색")) {
       result.backgroundColor = line.split(": ")[1];

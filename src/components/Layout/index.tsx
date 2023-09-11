@@ -1,6 +1,6 @@
 "use client";
 
-import { Layout, MenuProps, Menu } from "antd";
+import { Layout, MenuProps, Menu, FloatButton } from "antd";
 import { useState } from "react";
 
 import { MenuInfo } from "rc-menu/lib/interface";
@@ -8,6 +8,9 @@ import { MenuInfo } from "rc-menu/lib/interface";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import NavBar from "../NavBar";
+import Link from "next/link";
+import { TReservation } from "@/types/model/order/type";
+import AddReservation from "../Reservation/AddReservation";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -73,7 +76,9 @@ export function Sider() {
 export function Header() {
   return (
     <Layout.Header className=" bg-white border-b-2 border-violet-100 h-[3.5rem] flex flex-row p-2  items-center sticky top-0 z-50">
-      <Image src="/boragom.png" alt="logo" width="50" height="50" />
+      <Link href="/">
+        <Image src="/boragom.png" alt="logo" width="50" height="50" />
+      </Link>
     </Layout.Header>
   );
 }
@@ -81,18 +86,24 @@ export function Header() {
 export function Footer() {
   const pathname = usePathname();
   const router = useRouter();
-  const getSelectedKeys = (pathname: string) => {
-    switch (pathname) {
-      case "/management":
-        return ["management"];
-      default:
-        return ["/"];
+
+  const addReservation = async (v: TReservation) => {
+    try {
+      await fetch("/api/order", {
+        method: "POST",
+        body: JSON.stringify(v),
+        cache: "no-store",
+      });
+    } catch (error) {
+      console.log(error);
     }
+    router.refresh();
   };
 
   return (
     <Layout.Footer className="p-0 fixed bottom-0 w-screen h-[4rem]">
-      <NavBar />
+      <AddReservation onClick={addReservation} />
+      {/* <NavBar /> */}
     </Layout.Footer>
   );
 }

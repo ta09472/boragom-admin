@@ -70,7 +70,7 @@ export default async function OrderDetail({ params }: Props) {
       </div>
       <div
         className={twMerge(
-          "overflow-auto h-[40rem] bg-white rounded-md p-4 flex flex-col gap-4"
+          "overflow-auto h-[38rem] bg-white rounded-md p-4 flex flex-col gap-4"
           // getColor(status)
         )}
       >
