@@ -30,8 +30,9 @@ export default async function OrderEdit({ params }: Props) {
       </div>
       <div
         className={twMerge(
-          "overflow-auto h-[38rem] bg-white rounded-md p-4 flex flex-col gap-4"
+          "overflow-auto bg-white rounded-md p-4 flex flex-col gap-4"
         )}
+        style={{ height: "82.5dvh" }}
       >
         <FormContainer order={orderDetail} />
       </div>

@@ -45,7 +45,7 @@ export default function Home() {
           onChange={handleClick}
         />
       </div>
-      <div className="overflow-auto h-[40rem]">
+      <div className="overflow-auto" style={{ height: "82.5dvh" }}>
         <Suspense fallback={<Loading />}>
           <ReservationList segment={segment} />
         </Suspense>

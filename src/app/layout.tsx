@@ -24,17 +24,16 @@ export default function RootLayout({
       <link rel="icon" href="/boragom.ico" />
       <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"
       />
+
       <body>
         <Providers>
           <Layout>
             <Layout className="">
               <Header />
               <StyledComponentsRegistry>
-                <div className=" overflow-auto" style={{ height: "90svh" }}>
-                  {children}
-                </div>
+                <>{children}</>
               </StyledComponentsRegistry>
             </Layout>
           </Layout>

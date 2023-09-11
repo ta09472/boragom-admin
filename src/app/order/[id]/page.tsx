@@ -70,9 +70,10 @@ export default async function OrderDetail({ params }: Props) {
       </div>
       <div
         className={twMerge(
-          "overflow-auto h-[38rem] bg-white rounded-md p-4 flex flex-col gap-4"
+          "overflow-auto bg-white rounded-md p-4 flex flex-col gap-4"
           // getColor(status)
         )}
+        style={{ height: "82.5dvh" }}
       >
         <div className="flex justify-between  text-gray-800">
           예약자 성함:<p>{name}</p>
