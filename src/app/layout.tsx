@@ -24,7 +24,7 @@ export default function RootLayout({
       <link rel="icon" href="/boragom.ico" />
       <body className="min-h-screen antialiased">
         <Providers>
-          <Layout className="h-[100dvh]" hasSider>
+          <Layout style={{ height: "100dvh" }}>
             <Layout className="">
               <Header />
               <StyledComponentsRegistry>
