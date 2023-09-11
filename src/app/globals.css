@@ -6,3 +6,6 @@
   width: 0;
   background: transparent; /* Chrome/Safari/Webkit */
 }
+input {
+  font-size: 16px;
+}

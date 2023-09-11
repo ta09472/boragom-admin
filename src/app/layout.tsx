@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Layout } from "antd";
 import { Header } from "@/components/Layout";
 import StyledComponentsRegistry from "@/app/libs/AntdRegistry";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "Boragom",
@@ -22,12 +23,12 @@ export default function RootLayout({
   return (
     <html>
       <link rel="icon" href="/boragom.ico" />
-      <head>
+      <Head>
         <meta
           name="viewport"
           content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"
         />
-      </head>
+      </Head>
       <body>
         <Providers>
           <Layout>
