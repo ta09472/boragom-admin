@@ -74,7 +74,10 @@ export function Sider() {
 
 export function Header() {
   return (
-    <Layout.Header className=" bg-white border-b-2 border-violet-100 h-[3.5rem] flex flex-row p-2  items-center sticky top-0 z-50">
+    <Layout.Header
+      style={{ height: "10dvh" }}
+      className=" bg-white border-b-2 border-violet-100 flex flex-row p-2  items-center sticky top-0 z-50"
+    >
       <Link href="/">
         <Image src="/boragom.png" alt="logo" width="50" height="50" />
       </Link>

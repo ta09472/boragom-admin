@@ -24,11 +24,13 @@ export default function RootLayout({
       <link rel="icon" href="/boragom.ico" />
       <body className="min-h-screen antialiased">
         <Providers>
-          <Layout style={{ height: "100svh" }}>
+          <Layout>
             <Layout className="">
               <Header />
               <StyledComponentsRegistry>
-                <div>{children}</div>
+                <div className=" overflow-auto" style={{ height: "90dvh" }}>
+                  {children}
+                </div>
               </StyledComponentsRegistry>
             </Layout>
           </Layout>
