@@ -75,7 +75,7 @@ export function Sider() {
 export function Header() {
   return (
     <Layout.Header
-      style={{ height: "10dvh" }}
+      style={{ height: "10svh" }}
       className=" bg-white border-b-2 border-violet-100 flex flex-row p-2  items-center sticky top-0 z-50"
     >
       <Link href="/">
