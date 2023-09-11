@@ -24,11 +24,11 @@ export default function RootLayout({
       <link rel="icon" href="/boragom.ico" />
       <body className="min-h-screen antialiased">
         <Providers>
-          <Layout className="h-[100dvh] overflow-hidden" hasSider>
-            <Layout className=" overflow-hidden">
+          <Layout className="h-[100dvh]" hasSider>
+            <Layout className="">
               <Header />
               <StyledComponentsRegistry>
-                <div className="mb-[4rem]">{children}</div>
+                <div>{children}</div>
               </StyledComponentsRegistry>
               <Footer />
             </Layout>

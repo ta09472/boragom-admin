@@ -1,13 +1,12 @@
 "use client";
 
-import { Layout, MenuProps, Menu, FloatButton } from "antd";
+import { Layout, MenuProps, Menu } from "antd";
 import { useState } from "react";
 
 import { MenuInfo } from "rc-menu/lib/interface";
 
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
-import NavBar from "../NavBar";
 import Link from "next/link";
 import { TReservation } from "@/types/model/order/type";
 import AddReservation from "../Reservation/AddReservation";
@@ -84,7 +83,6 @@ export function Header() {
 }
 
 export function Footer() {
-  const pathname = usePathname();
   const router = useRouter();
 
   const addReservation = async (v: TReservation) => {
@@ -101,9 +99,8 @@ export function Footer() {
   };
 
   return (
-    <Layout.Footer className="p-0 fixed bottom-0 w-screen h-[4rem]">
+    <Layout.Footer>
       <AddReservation onClick={addReservation} />
-      {/* <NavBar /> */}
     </Layout.Footer>
   );
 }
