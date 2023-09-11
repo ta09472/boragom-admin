@@ -72,14 +72,6 @@ export default function AddReservation({ onClick }: Props) {
         shape="circle"
         onClick={handleClick}
         type="text"
-        // icon={
-        //   <PlusOutlined
-        //     style={{
-        //       color: "#b8b8b8",
-        //       fontSize: "1.6rem",
-        //     }}
-        //   />
-        // }
       >
         <PlusOutlined style={{ color: "#989696", fontSize: "1.4rem" }} />
       </Button>
@@ -90,6 +82,7 @@ export default function AddReservation({ onClick }: Props) {
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleClose}
+        destroyOnClose
       >
         <TextArea
           value={input}

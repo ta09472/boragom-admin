@@ -31,7 +31,7 @@ export default function NavBar() {
       await fetch("/api/order", {
         method: "POST",
         body: JSON.stringify(v),
-        cache: "no-cache",
+        cache: "no-store",
       });
     } catch (error) {
       console.log(error);

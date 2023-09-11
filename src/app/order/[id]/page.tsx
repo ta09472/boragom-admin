@@ -33,7 +33,7 @@ export default async function OrderDetail({ params }: Props) {
   const orderDetail: TReservation = await fetch(
     `${process.env.BASE_URL}/api/order/${params.id}`,
     {
-      cache: "no-cache",
+      cache: "no-store",
     }
   ).then((v) => v.json());
 

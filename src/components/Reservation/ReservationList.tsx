@@ -67,7 +67,7 @@ export default async function ReservationList({ segment }: Props) {
   const data: TReservation[] = await fetch(
     `${process.env.BASE_URL}/api/order`,
     {
-      next: { revalidate: 10 },
+      cache: "no-store",
     }
   ).then((v) => v.json());
 
