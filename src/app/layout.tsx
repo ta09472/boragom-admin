@@ -3,7 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 import { Layout } from "antd";
-import { Header, Footer } from "@/components/Layout";
+import { Header } from "@/components/Layout";
 import StyledComponentsRegistry from "@/app/libs/AntdRegistry";
 
 export const metadata: Metadata = {
@@ -24,7 +24,7 @@ export default function RootLayout({
       <link rel="icon" href="/boragom.ico" />
       <body className="min-h-screen antialiased">
         <Providers>
-          <Layout style={{ height: "100dvh" }}>
+          <Layout style={{ height: "100svh" }}>
             <Layout className="">
               <Header />
               <StyledComponentsRegistry>
