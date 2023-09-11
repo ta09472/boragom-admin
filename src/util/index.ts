@@ -14,6 +14,7 @@
 // 10. 참고 사진:
 
 import { TReservation } from "@/types/model/order/type";
+import { format } from "date-fns";
 
 export function splitString(input: string) {
   const lines = input.split("\n");
@@ -67,13 +68,42 @@ export function parseTextToJSON(text: string): TReservation {
   const regex = /7\.\s*([\s\S]*?)(?=8\.)/;
   const result: Partial<TReservation> = {};
 
+  //   1.예약자성함:
+  // 2.연락처:
+  // 3.픽업 날짜/요일/시간:(@월/@일/@요일/15:00)
+  // 4.사이즈:(미니/1호/2호)
+  // 5.맛:(기본/꿀꿀바/오레오/초코딸기)
+  // 6.케이크바탕색:
+  // 7.문구 / 문구색 :
+  //   -케이크 위:
+  //   -하판:
+  // 8.보냉백+아이스팩/안함(택1):
+  // 9.구체적인 요청사항:
+  // 10.참고 사진:
+
   lines.forEach((line) => {
     if (line.includes("예약자성함")) {
       result.name = line.split(": ")[1];
     } else if (line.includes("연락처")) {
       result.phoneNumber = line.split(": ")[1];
     } else if (line.includes("픽업 날짜/요일/시간")) {
-      result.pickupDate = new Date(line.split(": ")[1]).toISOString();
+      const currentYear = new Date().getFullYear();
+
+      const match = line.match(/@(\d+)\/@(\d+)\/@(\w+)\/(\d+:\d+)/);
+
+      if (!match) return null;
+
+      const month = match[1];
+      const day = match[2];
+      // 요일 정보는 파싱만 해두었고 실제로 사용되진 않았습니다. 필요하다면 추가 작업이 필요합니다.
+      const weekday = match[3];
+      const time = match[4];
+
+      const parsedDate = new Date(`${currentYear}-${month}-${day} ${time}`);
+
+      result.pickupDate = new Date(
+        format(parsedDate, "yyyy-MM-dd HH:mm")
+      ).toISOString();
     } else if (line.includes("사이즈")) {
       result.size = line.split(": ")[1];
     } else if (line.includes("시트")) {
